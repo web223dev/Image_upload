@@ -71,6 +71,7 @@ const DownloadItem = ({ name, file, filename, removeFile }) => {
                 removeFile();
             }, 4000);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const formatBytes = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;

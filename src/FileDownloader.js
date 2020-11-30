@@ -46,17 +46,18 @@ const FileDownloader = () => {
                                         <img
                                             className="card-img-top mb-3"
                                             src={file.thumb}
+                                            alt="card"
                                         />
                                         <h5 className="card-title">
                                             {file.name}
                                         </h5>
 
-                                        <a
+                                        <button
                                             className="btn btn-primary cursor-pointer text-white"
                                             onClick={() => download(file)}
                                         >
                                             Download{" "}
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
