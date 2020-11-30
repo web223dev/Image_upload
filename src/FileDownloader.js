@@ -41,7 +41,7 @@ const FileDownloader = () => {
                     <div className="row mt-3">
                         {files.map((file, idx) => (
                             <div className="col" key={idx}>
-                                <div className="card ">
+                                <div className="card">
                                     <div className="card-body" key={idx}>
                                         <img
                                             className="card-img-top mb-3"
