@@ -1,13 +1,11 @@
 import React, { useState, useRef } from "react";
 import axios, { CancelToken, isCancel } from "axios";
 import { ProgressBar } from "react-bootstrap";
-import useFileDownloader from "./hooks/useFileDownloader";
 import FileDownloader from "./FileDownloader";
 
 const FileUpload = () => {
     const [uploadPercentage, setUploadPercentage] = useState(0);
     const cancelFileUpload = useRef(null);
-    const [downloadFile, downloaderComponentUI] = useFileDownloader();
 
     const uploadFile = ({ target: { files } }) => {
         let data = new FormData();
@@ -91,7 +89,6 @@ const FileUpload = () => {
                         </div>
                     )}
                     <FileDownloader />
-                    {downloaderComponentUI}
                 </div>
             </div>
         </>
