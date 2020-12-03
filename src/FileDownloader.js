@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios, { isCancel } from "axios";
-import useFileDownloader from "./hooks/useFileDownloader";
+import axios from "axios";
 
 function downloadImage(img) {
   const downloadLink = document.createElement("a");
@@ -12,27 +11,20 @@ function downloadImage(img) {
 }
 
 const FileDownloader = () => {
-    const [downloadFile, downloaderComponentUI] = useFileDownloader();
     const [ImgSource, setImageSource] = useState(null);
 
     axios
-      .get(
-        '/rs/identity/image/Q8007',
-        { responseType: 'arraybuffer' },
-      )
-      .then(response => {
-        const base64 = btoa(
-          new Uint8Array(response.data).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            '',
-          ),
-        );
-        setImageSource("data:;base64," + base64);
-    });
+        .get("/rs/identity/image/Q8007", { responseType: "arraybuffer" })
+        .then((response) => {
+            const base64 = btoa(
+                new Uint8Array(response.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    ""
+                )
+            );
+            setImageSource("data:;base64," + base64);
+        });
 
-    
-
-    // const download = (file) => downloadFile(file); 
     return (
         <>
             <div className="row mt-5">
@@ -45,12 +37,13 @@ const FileDownloader = () => {
                                     <img
                                         className="card-img-top mb-3"
                                         src={ImgSource}
+                                        alt="Server Img"
                                     />
                                     <h5 className="card-title">Photo 1</h5>
 
                                     <button
                                         className="btn btn-primary cursor-pointer text-white"
-                                        onClick={()=>downloadImage(ImgSource)}
+                                        onClick={() => downloadImage(ImgSource)}
                                     >
                                         Download{" "}
                                     </button>
@@ -59,10 +52,9 @@ const FileDownloader = () => {
                         </div>
                     </div>
                 </div>
-                {downloaderComponentUI}
             </div>
         </>
     );
-}
+};
 
 export default FileDownloader;
