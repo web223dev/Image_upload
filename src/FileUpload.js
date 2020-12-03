@@ -54,7 +54,6 @@ const FileUpload = () => {
             cancelFileUpload.current("User has canceled the file upload.");
     };
 
-    const download = (file) => downloadFile(file);
     return (
         <>
             <div className="row justify-content-center bg-light p-5">
